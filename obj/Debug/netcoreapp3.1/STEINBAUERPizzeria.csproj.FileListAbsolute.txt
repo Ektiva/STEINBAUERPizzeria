@@ -1,0 +1,9 @@
+C:\MyProjects\STEINBAUERPizzeria\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\MyProjects\STEINBAUERPizzeria\bin\Debug\netcoreapp3.1\appsettings.json
+C:\MyProjects\STEINBAUERPizzeria\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\STEINBAUERPizzeria.csprojAssemblyReference.cache
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\STEINBAUERPizzeria.AssemblyInfoInputs.cache
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\STEINBAUERPizzeria.AssemblyInfo.cs
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\STEINBAUERPizzeria.RazorTargetAssemblyInfo.cache
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\staticwebassets\STEINBAUERPizzeria.StaticWebAssets.Manifest.cache
+C:\MyProjects\STEINBAUERPizzeria\obj\Debug\netcoreapp3.1\staticwebassets\STEINBAUERPizzeria.StaticWebAssets.xml

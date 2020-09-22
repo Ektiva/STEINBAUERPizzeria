@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "J+DHmO/YBJLU21fItXq1jx6BSTat2rVovKlaIaBCUiPyMl3KR4PM7W/902sfi5meMfuWBtdMVkpJjiCVHsY/3A==",
+  "success": true,
+  "projectFilePath": "C:\\MyProjects\\STEINBAUERPizzeria\\STEINBAUERPizzeria.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ektiv\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
