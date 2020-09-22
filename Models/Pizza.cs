@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace STEINBAUERPizzeria.Models
 {
+
     public class Pizza
     {
         public int Id { get; set; }
@@ -14,6 +15,6 @@ namespace STEINBAUERPizzeria.Models
         [Display(Name = "Pizza Dough Type")]
         public Types PizzaDoughType { get; set; }
         public bool IsCalzone { get; set; }
-        public Ingredients IngredientsList { get; set; }
+        public Ingredients IngredientsList { get; set; }      
     }
 }

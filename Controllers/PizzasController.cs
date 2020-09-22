@@ -7,9 +7,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using STEINBAUERPizzeria.Data;
 using STEINBAUERPizzeria.DTOs;
 using STEINBAUERPizzeria.Models;
+using STEINBAUERPizzeria.Repositories.Interfaces;
 using STEINBAUERPizzeria.Repositories.Repos;
 
 namespace STEINBAUERPizzeria.Controllers
@@ -18,20 +20,22 @@ namespace STEINBAUERPizzeria.Controllers
     [ApiController]
     public class PizzasController : ControllerBase
     {
-        private readonly PizzeriaRepository _pizzeriaRepo;
+        private readonly IPizzeriaRepository _pizzeriaRepo;
         private readonly IMapper _mapper;
-        public PizzasController(PizzeriaRepository pizzeriaRepo, IMapper mapper)
+        private readonly ILogger<PizzasController> _logger;
+        public PizzasController(IPizzeriaRepository pizzeriaRepo, IMapper mapper, ILogger<PizzasController> logger)
         {
             _pizzeriaRepo = pizzeriaRepo;
             _mapper = mapper;
+            _logger = logger;
         }
 
         // GET: api/Pizzas
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<PizzaDto>>> GetPizzas()
-        {
-            return  Ok(_mapper.Map<PizzaDto>(await _pizzeriaRepo.GetAllPizzas()));
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IReadOnlyList<PizzaDto>>> GetPizzas()
+        //{
+        //    return  Ok(_mapper.Map<PizzaDto>(await _pizzeriaRepo.GetAllPizzas()));
+        //}
 
         // GET: api/Pizzas/5
         [HttpGet("{id}")]
@@ -44,6 +48,7 @@ namespace STEINBAUERPizzeria.Controllers
                 return NotFound();
             }
 
+            _logger.LogInformation("Hello, {Id}!", id);
 
             return _mapper.Map<PizzaDto>(pizza);
         }
@@ -52,12 +57,13 @@ namespace STEINBAUERPizzeria.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPizza(int id, Pizza pizza)
+        public async Task<IActionResult> PutPizza(int id, PizzaDto pizzaDto)
         {
-            if (id != pizza.Id)
+            if (id != pizzaDto.Id)
             {
                 return BadRequest();
             }
+            var pizza = _mapper.Map<Pizza>(pizzaDto);
 
             _pizzeriaRepo.Update(pizza);
 
@@ -84,8 +90,9 @@ namespace STEINBAUERPizzeria.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Pizza>> PostPizza(Pizza pizza)
+        public async Task<ActionResult<Pizza>> PostPizza(PizzaDto pizzaDto)
         {
+            var pizza = _mapper.Map<Pizza>(pizzaDto);
             _pizzeriaRepo.Add(pizza);
             await _pizzeriaRepo.Complete();
 

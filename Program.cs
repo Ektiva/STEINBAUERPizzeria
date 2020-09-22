@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using STEINBAUERPizzeria.Data;
 using Microsoft.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace STEINBAUERPizzeria
 {
@@ -16,28 +17,47 @@ namespace STEINBAUERPizzeria
     {
         public static void Main(string[] args)
         {
-            //1. Get the IWebHost which will host this application.
-            var host = CreateHostBuilder(args).Build();
+            Log.Logger = new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .CreateLogger();
 
-            //2. Find the service layer within our scope.
-            using (var scope = host.Services.CreateScope())
+            try
             {
-                //3. Get the instance of DataContext in our services layer
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<DataContext>();
+                Log.Information("Starting up");
+                // Get the IWebHost which will host this application.
+                var host = CreateHostBuilder(args).Build();
 
-                //4. Call PizzaSeedData to create sample data
-                PizzaSeedData.Initialize(services);
+                // Find the service layer within our scope.
+                using (var scope = host.Services.CreateScope())
+                {
+                    // Get the instance of DataContext in our services layer
+                    var services = scope.ServiceProvider;
+                    var context = services.GetRequiredService<DataContext>();
+
+                    // Call PizzaSeedData to create sample data
+                    PizzaSeedData.Initialize(services);
+                }
+
+                // Continue to run the application
+                host.Run();
             }
-
-            //Continue to run the application
-            host.Run();
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Application start-up failed");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+            
 
             // CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

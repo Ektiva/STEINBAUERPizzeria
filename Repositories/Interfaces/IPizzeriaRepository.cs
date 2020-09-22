@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STEINBAUERPizzeria.Repositories.Interfaces
 {
-    interface IPizzeriaRepository
+    public interface IPizzeriaRepository
     {
         void Add(Pizza pizza);
         Task<Pizza> GetPizza(int pizzaId);
