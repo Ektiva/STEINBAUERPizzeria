@@ -22,7 +22,8 @@ The app will not work properly since I use EF InMemory database. If nessecarly I
 
 ## Screenshot
 
-
+![GitHub Logo](/screenshots/Home.PNG)
+Format: ![Alt Text](url)
 
 ## Note
 
