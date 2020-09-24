@@ -30,6 +30,13 @@ The app will not work properly since I use EF InMemory database. If nessecarly I
 
 ![GitHub Logo](/screenshots/EditPizza.PNG)
 
+## Swagger
+
+https://steinbauerpizzeria.azurewebsites.net/swagger/index.html#/Pizzas
+
+![GitHub Logo](/screenshots/Swagger.PNG)
+
+
 ## Note
 
 This is a very basic web application and there is lot of thing to improve. However the purpose was just to quickly provide a working web application
