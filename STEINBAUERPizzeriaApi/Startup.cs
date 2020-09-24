@@ -82,7 +82,8 @@ namespace STEINBAUERPizzeriaApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHsts();
+            app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -90,6 +91,9 @@ namespace STEINBAUERPizzeriaApi
             app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             // Register the Swagger generator and the Swagger UI middlewares
             app.UseOpenApi();
