@@ -23,7 +23,12 @@ The app will not work properly since I use EF InMemory database. If nessecarly I
 ## Screenshot
 
 ![GitHub Logo](/screenshots/Home.PNG)
-Format: ![Alt Text](url)
+
+![GitHub Logo](/screenshots/CreatePizza.PNG)
+
+![GitHub Logo](/screenshots/DeletePizza.PNG)
+
+![GitHub Logo](/screenshots/EditPizza.PNG)
 
 ## Note
 
