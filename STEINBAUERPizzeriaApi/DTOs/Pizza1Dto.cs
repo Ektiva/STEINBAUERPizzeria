@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace STEINBAUERPizzeriaApi.DTOs
 {
-    public class PizzaDto
+    public class Pizza1Dto
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string PizzaDoughType { get; set; }
-        public bool IsCalzone { get; set; }
+        public int IsCalzone { get; set; }
         public string IngredientsList { get; set; }
     }
 }

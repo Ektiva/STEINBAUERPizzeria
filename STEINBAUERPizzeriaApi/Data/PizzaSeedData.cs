@@ -24,7 +24,7 @@ namespace STEINBAUERPizzeriaApi.Data
                 context.Pizzas.AddRange(
                     new Pizza
                     {
-                        Id = 1,
+                        Id = "1",
                         Name = "Howie Maui New York Style Pizza",
                         PizzaDoughType = Types.NewYorkStyle,
                         IsCalzone = true,
@@ -32,7 +32,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 2,
+                        Id = "2",
                         Name = "Howie New York Style Pizza",
                         PizzaDoughType = Types.NewYorkStyle,
                         IsCalzone = false,
@@ -40,7 +40,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 3,
+                        Id = "3",
                         Name = "Veggie Neapolitan Pizza",
                         PizzaDoughType = Types.Neapolitan,
                         IsCalzone = false,
@@ -48,7 +48,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 4,
+                        Id = "4",
                         Name = "Baccon Neapolitan Pizza",
                         PizzaDoughType = Types.Neapolitan,
                         IsCalzone = true,
@@ -56,7 +56,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 5,
+                        Id = "5",
                         Name = "Bbbq Neapolitan Chicken Pizza",
                         PizzaDoughType = Types.Neapolitan,
                         IsCalzone = false,
@@ -64,7 +64,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 6,
+                        Id = "6",
                         Name = "Asian Neapolitan Pizza",
                         PizzaDoughType = Types.Neapolitan,
                         IsCalzone = true,
@@ -72,7 +72,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 7,
+                        Id = "7",
                         Name = "Buffalo Chicken Neapolitan Pizza",
                         PizzaDoughType = Types.Neapolitan,
                         IsCalzone = false,
@@ -80,7 +80,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 8,
+                        Id = "8",
                         Name = "Baccon Sicilian Pizza",
                         PizzaDoughType = Types.Sicilian,
                         IsCalzone = true,
@@ -88,7 +88,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 9,
+                        Id = "9",
                         Name = "Veggie Sicilian Pizza",
                         PizzaDoughType = Types.Sicilian,
                         IsCalzone = false,
@@ -96,7 +96,7 @@ namespace STEINBAUERPizzeriaApi.Data
                     },
                     new Pizza
                     {
-                        Id = 10,
+                        Id = "10",
                         Name = "Howie Sicilian Pizza",
                         PizzaDoughType = Types.Sicilian,
                         IsCalzone = true,

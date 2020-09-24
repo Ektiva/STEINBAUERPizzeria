@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Create/Edit your Pizza</h1>
+<div mat-dialog-content>
+  
+  <p> <strong>Name: </strong> {{data.name}}</p>
+  <mat-form-field >
+    <input matInput  [(ngModel)]="data.name" required>
+  </mat-form-field>
+
+  <p> <strong>Pizza Dough Type: </strong> {{data.pizzaDoughType}}</p>
+  <mat-form-field appearance="fill">
+    <select matNativeControl [(ngModel)]="data.pizzaDoughType">
+      <option value="New York Style">NewYorkStyle</option>
+      <option value="Neapolitan" selected>Neapolitan</option>
+      <option value="Sicilian">Sicilian</option>
+    </select>
+  </mat-form-field>
+
+  <p><strong> Is Calzone? </strong> {{data.isCalzone}}</p>
+  <mat-form-field appearance="fill">
+    <select matNativeControl [(ngModel)]="data.isCalzone">
+      <option value="true">YES</option>
+      <option value="false" selected>NO</option>
+    </select>
+  </mat-form-field>
+
+  <p><strong> Ingredients: </strong> {{data.ingredientsList}}</p>
+  <mat-form-field appearance="fill">
+    <select matNativeControl [(ngModel)]="data.ingredientsList">
+      <option value="Pineapple Pizza with ham, bacon, pineapple & mozzarella cheese.">HOWIE_MAUI</option>
+      <option value="Sweet BBQ sauce, grilled chicken breast, bacon, red onions & mozzarella cheese." selected>BBQ_CHICKEN</option>
+      <option value="Pepperoni, ham, mushrooms, red onions, green peppers & mozzarella cheese.">OWIE_SPECIAL</option>
+      <option value="Mushrooms, red onions, green peppers, tomatoes, black olives & mozzarella cheese.">VEGGIE</option>
+      <option value="Grilled chicken breast, bacon & mozzarella cheese with ranch dressing.">CHICKEN_BACON_RANCH</option>
+      <option value="Ground beef, bacon, mozzarella & cheddar cheese.">BACON_CHEDDAR_CHEESEBURGER</option>
+      <option value="Spicy buffalo sauce, grilled chicken breast, red onions, mozzarella & cheddar cheese.">BUFFALO_CHICKEN</option>
+      <option value="Tangy Asian sauce, grilled chicken breast, red onions, green peppers, sesame seeds & mozzarella cheese.">ASIAN_CHICKEN</option>
+    </select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="savePizza(data)" [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

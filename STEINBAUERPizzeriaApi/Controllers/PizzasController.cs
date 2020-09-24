@@ -30,16 +30,24 @@ namespace STEINBAUERPizzeriaApi.Controllers
             _logger = logger;
         }
 
-        // GET: api/Pizzas
-        //[HttpGet]
-        //public async Task<ActionResult<IReadOnlyList<PizzaDto>>> GetPizzas()
-        //{
-        //    return  Ok(_mapper.Map<PizzaDto>(await _pizzeriaRepo.GetAllPizzas()));
-        //}
+        //GET: api/Pizzas
+       [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<PizzaDto>>> GetPizzas()
+        {
+            var pizzas = await _pizzeriaRepo.GetAllPizzas();
+
+            var pizzasDto = new List<PizzaDto>();
+            foreach(var pizza in pizzas)
+            {
+                var pizzaDto = _mapper.Map<PizzaDto>(pizza);
+                pizzasDto.Add(pizzaDto);
+            } 
+            return Ok(pizzasDto);
+        }
 
         // GET: api/Pizzas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PizzaDto>> GetPizza(int id)
+        public async Task<ActionResult<PizzaDto>> GetPizza(string id)
         {
             var pizza = await _pizzeriaRepo.GetPizza(id);
 
@@ -57,7 +65,7 @@ namespace STEINBAUERPizzeriaApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPizza(int id, PizzaDto pizzaDto)
+        public async Task<IActionResult> PutPizza(string id, Pizza1Dto pizzaDto)
         {
             if (id != pizzaDto.Id)
             {
@@ -90,7 +98,7 @@ namespace STEINBAUERPizzeriaApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Pizza>> PostPizza(PizzaDto pizzaDto)
+        public async Task<ActionResult<Pizza>> PostPizza(Pizza1Dto pizzaDto)
         {
             var pizza = _mapper.Map<Pizza>(pizzaDto);
             _pizzeriaRepo.Add(pizza);
@@ -101,7 +109,7 @@ namespace STEINBAUERPizzeriaApi.Controllers
 
         // DELETE: api/Pizzas/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Pizza>> DeletePizza(int id)
+        public async Task<ActionResult<Pizza>> DeletePizza(string id)
         {
             var pizza = await _pizzeriaRepo.GetPizza(id);
             if (pizza == null)
@@ -115,7 +123,7 @@ namespace STEINBAUERPizzeriaApi.Controllers
             return pizza;
         }
 
-        private bool PizzaExists(int id)
+        private bool PizzaExists(string id)
         {
             return _pizzeriaRepo.Exist(id);
         }

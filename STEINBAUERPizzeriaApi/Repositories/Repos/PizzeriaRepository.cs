@@ -32,7 +32,7 @@ namespace STEINBAUERPizzeriaApi.Repositories.Repos
             return await _context.Set<Pizza>().ToListAsync();
         }
 
-        public async Task<Pizza> GetPizza(int pizzaId)
+        public async Task<Pizza> GetPizza(string pizzaId)
         {
             return await _context.Set<Pizza>().FindAsync(pizzaId);
         }
@@ -48,7 +48,7 @@ namespace STEINBAUERPizzeriaApi.Repositories.Repos
             return await _context.SaveChangesAsync();
         }
 
-        public bool Exist(int pizzaId)
+        public bool Exist(string pizzaId)
         {
             return _context.Pizzas.Any(e => e.Id == pizzaId);
         }

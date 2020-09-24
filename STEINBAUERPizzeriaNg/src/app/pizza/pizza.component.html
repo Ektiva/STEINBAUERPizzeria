@@ -1,0 +1,67 @@
+
+<div class="widget">
+    <h4 *ngIf="!(isMobile | async)?.matches" class="mmobile sub_title"> Welcome to STEINBAUER Pizzeria</h4>
+    <h5 *ngIf="(isMobile | async)?.matches" class="mobile sub_title"> Welcome to STEINBAUER Pizzeria</h5>
+    <h3 class="title">  Best Pizza in Town</h3>
+</div>
+
+<div>
+    <h6 style="text-align: left;">You can Create, Edit or Delete a variation of ours fancy Pizza...</h6>
+</div>
+
+<div class="text-center mt-2">  
+    <h2>
+        My Pizzas - {{pizzas.length}} founds
+        <button class="butn" mat-icon-button color="primary" aria-label="Example icon-button with a heart icon"
+            (click)="openDialog()">
+            Create New Variation<mat-icon>add_circle</mat-icon>
+        </button>
+    </h2>
+    
+    <hr>
+</div>
+
+<mat-grid-list *ngIf="!(isMobile | async)?.matches" cols="2">
+    <mat-grid-tile *ngFor="let pizza of pizzas">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{pizza.name}}</mat-card-title>
+              <mat-card-subtitle>{{pizza.pizzaDoughType}} - Is Calzone?: {{pizza.isCalzone}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/pizza.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{pizza.ingredientsList}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="openDialog(pizza)">EDIT</button>
+              <button mat-button (click)="openDeleteDialog(pizza.id)">DELETE</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div *ngIf="(isMobile | async)?.matches"> 
+    <div *ngFor="let pizza of pizzas">
+        <mat-card class="example-card-mobile">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{pizza.name}}</mat-card-title>
+                <mat-card-subtitle>{{pizza.pizzaDoughType}} - Is Calzone?: {{pizza.isCalzone}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/pizza.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                {{pizza.ingredientsList}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button (click)="openDialog(pizza)">EDIT</button>
+                <button mat-button (click)="openDeleteDialog(pizza.id)">DELETE</button>
+            </mat-card-actions>
+        </mat-card>
+        <br>
+    </div>
+</div>

@@ -28,8 +28,14 @@ namespace STEINBAUERPizzeriaApi.Helpers
             var pizzaTypeDict = new Dictionary<string, string>()
             {
                 { "NewYorkStyle", "New York Style" },
-                { "Neapolitan", " Neapolitan " },
-                { "Sicilian", " Sicilian" },
+                { "Neapolitan", "Neapolitan" },
+                { "Sicilian", "Sicilian" },
+            };
+
+            var isCalzoneDict = new Dictionary<string, int>()
+            {
+                { "true", 1 },
+                { "false", 0 }
             };
 
             CreateMap<Pizza, PizzaDto>()
@@ -41,6 +47,21 @@ namespace STEINBAUERPizzeriaApi.Helpers
                 {
                     opt.MapFrom(pizza => pizzaTypeDict[pizza.PizzaDoughType.ToString()]);
                 });
+            CreateMap<Pizza, Pizza1Dto>()
+                .ForMember(pizzadto => pizzadto.IngredientsList, opt =>
+                {
+                    opt.MapFrom(pizza => ingredientsDict[pizza.IngredientsList.ToString()]);
+                })
+                .ForMember(pizzadto => pizzadto.PizzaDoughType, opt =>
+                {
+                    opt.MapFrom(pizza => pizzaTypeDict[pizza.PizzaDoughType.ToString()]);
+                })
+                .ForMember(pizzadto => pizzadto.IsCalzone, opt =>
+                 {
+                     opt.MapFrom(pizza => isCalzoneDict[pizza.IsCalzone.ToString()]);
+                 });
+
+            CreateMap<Pizza1Dto, Pizza>();
 
             CreateMap<PizzaDto, Pizza>()
                 //.ForMember(pizza => pizza.IngredientsList, opt =>
