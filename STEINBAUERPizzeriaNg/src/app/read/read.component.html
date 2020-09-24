@@ -1,0 +1,10 @@
+<div class="right" *ngIf="pizzas">
+
+  <h3>Pizzas</h3>
+  <ul>
+    <li *ngFor="let pizza of pizzas | async">
+      <a [href]="" target="_blank">{{ pizza.id }}- {{ pizza.name }}</a>
+    </li>
+  </ul>
+
+</div>

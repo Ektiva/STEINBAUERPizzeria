@@ -20,16 +20,26 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { DeletePizzaDialogComponent } from './delete-pizza-dialog/delete-pizza-dialog.component';
 
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/pizza.reducer';
+import { CreateComponent } from './create/create.component';
+import { ReadComponent } from './read/read.component';
+
 @NgModule({
-   declarations: [
+   declarations: [		
       AppComponent,
       PizzaComponent,
       HeaderComponent,
       NewPizzaDialogComponent,
-      DeletePizzaDialogComponent
+      DeletePizzaDialogComponent,
+      CreateComponent,
+      ReadComponent
    ],
    imports: [
       BrowserModule,
+      StoreModule.forRoot({
+        pizza: reducer
+      }),
       AppRoutingModule,
       BrowserAnimationsModule,
       MatToolbarModule,
